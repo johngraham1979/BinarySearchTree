@@ -7,6 +7,9 @@
 
 #include "Interfaces/Comparable.h"
 
+/**
+ * A concrete wrapper implementation of Comparable<T> for storing, sorting, finding integers.
+ */
 class Integer : public Comparable<int>, private Printable {
 public:
     Integer( int* value ) : Comparable<int>( value ) {}

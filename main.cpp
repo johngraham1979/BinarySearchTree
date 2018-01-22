@@ -18,21 +18,27 @@ int main() {
 
     BinarySearchTree<Integer, int>* binarySearchTree = new BinarySearchTree<Integer, int>();
 
+    // put 100 values into the BST.
     for( int i = 0; i < 100; i++ )
         addValue( binarySearchTree );
 
+    // print the values to the screen.
     binarySearchTree->printValues();
     cout << endl;
 
+    // An Integer wrapping a value to find in the BST.
     Integer* integer = new Integer( 40 );
 
+    // Do the finding.
     Integer* discoveredInteger = binarySearchTree->find( integer );
 
+    // was the integer in the tree?
     if( discoveredInteger == NULL )
         cout << *integer->getValue() << " is not in the tree.";
     else
         cout << *discoveredInteger->getValue() << " is in the tree." << endl;
 
+    // clean up.
     delete (discoveredInteger);
     delete (binarySearchTree);
 

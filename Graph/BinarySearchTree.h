@@ -11,7 +11,12 @@
 
 
 template<typename wrapper, typename wrappedType>
-
+/**
+ * What users of this data structure sees and uses.
+ *
+ * @tparam wrapper
+ * @tparam wrappedType
+ */
 class BinarySearchTree {
 private:
     Node<wrapper, wrappedType>* rootNode = nullptr;
@@ -20,6 +25,11 @@ public:
 
     ~BinarySearchTree() { delete (rootNode); }
 
+    /**
+     * Insert a wrapped value.
+     *
+     * @param wrappedData
+     */
     inline void insert( wrapper* wrappedData ) {
         if( rootNode == nullptr ) {
             rootNode = new Node<wrapper, wrappedType>( wrappedData );
@@ -28,13 +38,19 @@ public:
         }
     }
 
-    inline wrapper* find( wrapper* value ) {
+    /**
+     * find a wrapped value in the tree that matches the value wrapped in the actual parameter.
+     *
+     * @param wrappedValue
+     * @return
+     */
+    inline wrapper* find( wrapper* wrappedValue ) {
         Node<wrapper, wrappedType>* discoveredNode = nullptr;
 
         if( rootNode == nullptr )
             return NULL;
 
-        discoveredNode = rootNode->find( value );
+        discoveredNode = rootNode->find( wrappedValue );
 
         if( discoveredNode == nullptr )
             return NULL;
@@ -42,6 +58,9 @@ public:
         return discoveredNode->getWrapper();
     }
 
+    /**
+     * Print all the values in the tree.
+     */
     inline void printValues() {
         this->rootNode->print();
     }
